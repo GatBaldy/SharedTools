@@ -1,0 +1,33 @@
+VectorDistort {
+ referenceFrame {{referenceFrameX}}
+ reference_frame_set true
+ holdFrame {{holdFrameX}}
+ frameDistance {{frameDistanceX}}
+ outputMode {{outputModeX}}
+ blurSize {{blurSizeX}}
+ imageFilter {{imageFilterX}}
+ name VectorDistortX
+ knobChanged "node = nuke.thisNode()\nknob = nuke.thisKnob()\nif knob.name() in ('showInfo'):\n    mode = node\['showInfo'].value()\n    if mode == 0:\n        node\['output'].setValue('')\n        \n    elif mode == 1:\n        node\['output'].setValue('\[value outputMode] : \[value referenceFrame]')\n"
+ selected true
+ addUserKnob {20 X}
+ addUserKnob {26 Xtab l "<font color= limegreen><b>X"}
+ addUserKnob {6 created -STARTLINE +INVISIBLE}
+ created true
+ addUserKnob {3 referenceFrameX l "Reference Frame"}
+ referenceFrameX 1001
+ addUserKnob {22 setToCurrentFrame l "set to current frame" -STARTLINE T nuke.thisNode().knob('referenceFrameX').setValue(nuke.frame())}
+ addUserKnob {6 holdFrameX l "Hold Frame" -STARTLINE}
+ addUserKnob {4 frameDistanceX l "Frame Distance" M {"1 frame" "2 frames" "4 frames" "8 frames" "16 frames" "32 frames" "64 frames" ""}}
+ addUserKnob {26 outputX l <b>Output}
+ addUserKnob {4 outputModeX l Output M {"warped src" st-map "st-map inverse" "" "" "" ""}}
+ addUserKnob {7 blurSizeX l "Blur Size" R 0 32}
+ addUserKnob {4 imageFilterX l Filter M {impulse cubic Keys Simon Rifman Mitchell Parzen notch Lanczos4 Lanczos6 sinc4 "" "" "" "" "" "" ""}}
+ imageFilterX cubic
+ addUserKnob {1 output l "" +STARTLINE +INVISIBLE}
+ output "\[value outputMode] : \[value referenceFrame]"
+ addUserKnob {6 showInfo l "show info" +STARTLINE}
+ showInfo true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {26 _ l "" +STARTLINE T "                                                                                                                                                                            "}
+ addUserKnob {26 Gat l "" t "Gaetan Baldy" -STARTLINE T "<font color = orchid><font size=2><i>Gat - 2023"}
+}
